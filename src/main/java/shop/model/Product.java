@@ -12,6 +12,18 @@ public class Product {
 	@JsonProperty("quantity")
 	private Integer quantity;
 	
+	
+	
+	public Product(String productName, Double price, Integer quantity) {
+		super();
+		this.productName = productName;
+		this.price = price;
+		this.quantity = quantity;
+	}
+	
+	public Product() {
+		
+	}
 	public String getProductName() {
 		return productName;
 	}

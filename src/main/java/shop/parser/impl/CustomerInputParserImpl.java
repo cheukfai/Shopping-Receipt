@@ -16,9 +16,8 @@ import shop.parser.CustomerInputParser;
 public class CustomerInputParserImpl implements CustomerInputParser{
 	private final Logger logger = LogManager.getLogger(CustomerInputParser.class);
 	private static final String locationPattern = "Location: (.*)";
-	private static final String productPattern = "^[0-9]* ([a-zA-z]* )*at [0-9]*(\.[0-9]*)?$";
+	private static final String productPattern = "^[0-9]* ([a-zA-z]* )*at [0-9]*(\\.[0-9]*)?$";
 	
-	@Override
 	public ShoppingReceipt parse(String input) {
 		// "Location: CA, 1 book at 17.99, 1 potato chips at 3.99";
 		ShoppingReceipt receipt = new ShoppingReceipt();
