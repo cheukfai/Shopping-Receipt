@@ -17,14 +17,14 @@ public class ShoppingReceiptUtils {
 		this.productCatMAp = productCatMAp;
 	}
 	
-	public ShoppingReceipt generateCompleteReceipt(ShoppingReceipt receipt) {
+	public void generateCompleteReceipt(ShoppingReceipt receipt) {
 		Double subtotal = 0.0;
 		Double tax = 0.0;
 		Double total = 0.0;
 		
 		for(Product product: receipt.getProductList()) {
 			subtotal = subtotal + product.getPrice() * product.getQuantity();
-			String prodcutType = productCatMAp.get(product.getProductName());
+			String prodcutType = productCatMAp.get(product.getProductName().replaceAll("\\s+",""));
 			RegionTaxIDetail regionTaxIDetail = countryInfo.getRegionTaxDetailMap().get(receipt.getLocation());
 			
 			Boolean isExempt = false;
@@ -37,14 +37,17 @@ public class ShoppingReceiptUtils {
 			if(!isExempt) {
 				tax = tax +  product.getPrice() * product.getQuantity() * (regionTaxIDetail.getTaxRate() / 100.0);
 			}
-			//for ()
 			
 		}
 		
-		tax = Math.round(tax * 20.0) / 20.0; // rounded up to the nearest 0.05 
-		subtotal = Math.round(subtotal * 20.0) / 20.0; // rounded up to the nearest 0.05 
+		tax = Math.ceil(tax * 20.0) / 20.0; // rounded up to the nearest 0.05 
+		subtotal = Math.round(subtotal * 100.0) / 100.0; // rounded up to 2 decimal places
+		total = tax + subtotal;
+		total = Math.round(total * 100.0) / 100.0; // rounded up to 2 decimal places
 		
-		return receipt;
+		receipt.setCalTax(tax);
+		receipt.setCalSubTotal(subtotal);
+		receipt.setCalTotal(total);
 		
 	}
 	
