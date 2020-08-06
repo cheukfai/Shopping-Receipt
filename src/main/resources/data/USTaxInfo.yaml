@@ -1,0 +1,11 @@
+country: USA
+regionTaxDetails:
+    - regionName: CA
+      taxRate: 9.75
+      exemptItemList:
+          - food
+    - regionName: CA
+      taxRate: 9.75
+      exemptItemList:
+          - food
+          - clothing
