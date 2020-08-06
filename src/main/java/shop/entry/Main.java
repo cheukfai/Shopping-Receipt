@@ -13,7 +13,8 @@ public class Main {
 
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
 		ConfigService configService = new ConfigServiceImpl();
-		System.out.print(configService.readTaxInfo(CountryEnum.US));
+		System.out.println(configService.readTaxInfo(CountryEnum.US));
+		System.out.println(configService.readItemCategory());
 		
 	}
 

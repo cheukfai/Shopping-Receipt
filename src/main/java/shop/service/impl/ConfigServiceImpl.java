@@ -3,6 +3,7 @@ package shop.service.impl;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Properties;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -16,20 +17,21 @@ import shop.service.ConfigService;
 public class ConfigServiceImpl implements ConfigService {
 
 	public HashMap<String, String> readItemCategory() throws JsonParseException, JsonMappingException, IOException {
-		InputStream inputStream = getClass()
-				.getClassLoader().getResourceAsStream("/data/itemCategoryMap.txt");
-		
-		ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-		mapper.findAndRegisterModules();
-		CountryInfo countryInfo = mapper.readValue(inputStream, CountryInfo.class);
+		HashMap<String,String> itemMap = new HashMap<String, String>();
+		Properties properties = new Properties();
+		properties.load(getClass().getResourceAsStream("/data/itemCategoryMap.conf"));
+	
+		for (String key : properties.stringPropertyNames()) {
+		    String value = properties.getProperty(key);
+		    itemMap.put(key, value);
+		}
 
-		return null;
+		return itemMap;
 	}
 
 	public CountryInfo readTaxInfo(CountryEnum countryEnum) throws JsonParseException, JsonMappingException, IOException {
 		
 		String fileName = countryEnum.name()+"TaxInfo.yaml";
-		System.out.print(fileName);
 		InputStream inputStream = getClass()
 				.getClassLoader().getResourceAsStream("data/"+fileName);
 		
