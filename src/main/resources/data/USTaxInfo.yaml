@@ -1,4 +1,4 @@
-country: USA
+country: US
 regionTaxDetails:
     - regionName: CA
       taxRate: 9.75
