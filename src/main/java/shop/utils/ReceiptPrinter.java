@@ -1,23 +1,25 @@
 package shop.utils;
 
+import java.text.DecimalFormat;
+
 import shop.model.Product;
 import shop.model.ShoppingReceipt;
 
 public class ReceiptPrinter {
 	public void printShoppingReceipt(ShoppingReceipt receipt) {
-		String formatHeader = "%-20s%15s%15s%n";
-		System.out.printf(formatHeader, "item", "price", "qty");
-		System.out.printf(formatHeader, "", "", "");
 		
-		String formatProduct = "%-20s%15s%15s%n";
+		DecimalFormat decimalFormat = new DecimalFormat("0.00");
+		String printFormat = "%-15s%15s%15s%n";
+		System.out.printf(printFormat, "item", "price", "qty");
+		System.out.printf(printFormat, "", "", "");
+		
 		for(Product product:receipt.getProductList()) {
-			System.out.printf(formatProduct, product.getProductName(), "$"+product.getPrice(), product.getQuantity());
+			System.out.printf(printFormat, product.getProductName(), "$"+decimalFormat.format(product.getPrice()), product.getQuantity());
 		}
 		
-		String formatTotal = "%-20s%15s%15s%n";
-		System.out.printf(formatTotal, "subtotal:", "", "$"+receipt.getCalSubTotal());
-		System.out.printf(formatTotal, "tax:", "", "$"+receipt.getCalTax());
-		System.out.printf(formatTotal, "total:", "", "$"+receipt.getCalTotal());
+		System.out.printf(printFormat, "subtotal:", "", "$"+decimalFormat.format(receipt.getCalSubTotal()));
+		System.out.printf(printFormat, "tax:", "", "$"+decimalFormat.format(receipt.getCalTax()));
+		System.out.printf(printFormat, "total:", "", "$"+decimalFormat.format(receipt.getCalTotal()));
 	
 
 	}
