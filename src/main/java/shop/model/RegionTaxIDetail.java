@@ -5,7 +5,7 @@ import java.util.List;
 public class RegionTaxIDetail {
 	private String regionName;
 	private Double taxRate;
-	private List<String> exemptItemList;
+	private List<String> exemptProductList;
 	
 	public String getRegionName() {
 		return regionName;
@@ -19,16 +19,16 @@ public class RegionTaxIDetail {
 	public void setTaxRate(Double taxRate) {
 		this.taxRate = taxRate;
 	}
-	public List<String> getExemptItemList() {
-		return exemptItemList;
+	public List<String> getExemptProductList() {
+		return exemptProductList;
 	}
-	public void setExemptItemList(List<String> exemptItemList) {
-		this.exemptItemList = exemptItemList;
+	public void setExemptProductList(List<String> exemptItemList) {
+		this.exemptProductList = exemptItemList;
 	}
 	@Override
 	public String toString() {
-		return "RegionTaxIDetail [regionName=" + regionName + ", taxRate=" + taxRate + ", exemptItemList="
-				+ exemptItemList + "]";
+		return "RegionTaxIDetail [regionName=" + regionName + ", taxRate=" + taxRate + ", exemptProductList="
+				+ exemptProductList + "]";
 	}
 	
 	

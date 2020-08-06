@@ -3,13 +3,8 @@ package shop.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Product {
-	@JsonProperty("productName")
 	private String productName;
-	
-	@JsonProperty("price")
 	private Double price;
-	
-	@JsonProperty("quantity")
 	private Integer quantity;
 	
 	

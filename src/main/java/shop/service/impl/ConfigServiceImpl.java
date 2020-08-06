@@ -16,17 +16,17 @@ import shop.service.ConfigService;
 
 public class ConfigServiceImpl implements ConfigService {
 
-	public HashMap<String, String> readItemCategory() throws JsonParseException, JsonMappingException, IOException {
-		HashMap<String,String> itemMap = new HashMap<String, String>();
+	public HashMap<String, String> readProductCategory() throws JsonParseException, JsonMappingException, IOException {
+		HashMap<String,String> productMap = new HashMap<String, String>();
 		Properties properties = new Properties();
-		properties.load(getClass().getResourceAsStream("/data/itemCategoryMap.conf"));
+		properties.load(getClass().getResourceAsStream("/data/productCategoryMap.conf"));
 	
 		for (String key : properties.stringPropertyNames()) {
 		    String value = properties.getProperty(key);
-		    itemMap.put(key, value);
+		    productMap.put(key, value);
 		}
 
-		return itemMap;
+		return productMap;
 	}
 
 	public CountryInfo readTaxInfo(CountryEnum countryEnum) throws JsonParseException, JsonMappingException, IOException {

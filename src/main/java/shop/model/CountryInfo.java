@@ -1,25 +1,25 @@
 package shop.model;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class CountryInfo {
 	private String country;
-	private List<RegionTaxIDetail> regionTaxDetails;
+	private HashMap<String, RegionTaxIDetail> regionTaxDetailMap;
 	public String getCountry() {
 		return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public List<RegionTaxIDetail> getRegionTaxDetails() {
-		return regionTaxDetails;
+	public HashMap<String, RegionTaxIDetail> getRegionTaxDetailMap() {
+		return regionTaxDetailMap;
 	}
-	public void setRegionTaxDetails(List<RegionTaxIDetail> regionTaxDetails) {
-		this.regionTaxDetails = regionTaxDetails;
+	public void setRegionTaxDetailMap(HashMap<String, RegionTaxIDetail> regionTaxDetailMap) {
+		this.regionTaxDetailMap = regionTaxDetailMap;
 	}
 	@Override
 	public String toString() {
-		return "CountryInfo [country=" + country + ", regionTaxDetails=" + regionTaxDetails + "]";
+		return "CountryInfo [country=" + country + ", regionTaxDetailMap=" + regionTaxDetailMap + "]";
 	}
 
 	
