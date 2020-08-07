@@ -23,8 +23,6 @@ public class Main {
 		ConfigService configService = new ConfigServiceImpl();
 		CountryInfo countryInfo = configService.readTaxInfo(CountryEnum.US);
 		HashMap<String,String> productCatMap = configService.readProductCategory();
-		//System.out.println(configService.readTaxInfo(CountryEnum.US));
-		//System.out.println(configService.readProductCategory());
 		ShoppingReceiptUtils shoppingReceiptUtils = new ShoppingReceiptUtils(countryInfo, productCatMap);
 		
 		System.out.print("Input: ");

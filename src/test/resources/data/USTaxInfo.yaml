@@ -1,0 +1,13 @@
+country: US
+regionTaxDetailMap:
+    CA:
+        regionName: CA
+        taxRate: 9.75
+        exemptProductList:
+            - food
+    NY:
+        regionName: NY
+        taxRate: 8.875
+        exemptProductList:
+            - food
+            - clothing

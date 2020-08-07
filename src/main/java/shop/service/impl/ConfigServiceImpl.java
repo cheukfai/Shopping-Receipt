@@ -19,7 +19,9 @@ public class ConfigServiceImpl implements ConfigService {
 	public HashMap<String, String> readProductCategory() throws JsonParseException, JsonMappingException, IOException {
 		HashMap<String,String> productMap = new HashMap<String, String>();
 		Properties properties = new Properties();
-		properties.load(getClass().getResourceAsStream("/data/productCategoryMap.conf"));
+		InputStream inputStream = getClass()
+				.getClassLoader().getResourceAsStream("data/productCategoryMap.conf");
+		properties.load(inputStream);
 	
 		for (String key : properties.stringPropertyNames()) {
 		    String value = properties.getProperty(key);
